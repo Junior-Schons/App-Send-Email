@@ -1,4 +1,5 @@
 <?php
+	//REQUIRE da bibioteca PHP mailer
 
 	require "./bibliotecas/PHPMailer/Exception.php";
 	require "./bibliotecas/PHPMailer/OAuth.php";
@@ -10,7 +11,7 @@
 	use PHPMailer\PHPMailer\Exception;
 
 	//print_r($_POST);
-
+	//Objeto Mensagem
 	class Mensagem {
 		private $para = null;
 		private $assunto = null;
@@ -54,14 +55,14 @@
 			$mail->isSMTP();                                            //Send using SMTP
 			$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
 			$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-			$mail->Username   = 'webcompleto2@gmail.com';                     //SMTP username
-			$mail->Password   = '!@#$4321';                               //SMTP password
+			$mail->Username   = 'junior@exemplo.com';  //email do usuario                   //SMTP username
+			$mail->Password   = '******';            //senha SMTP                   //SMTP password
 			$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
 			$mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
 			//Recipients
-			$mail->setFrom('webcompleto2@gmail.com', 'Web Completo Remetente');
-			$mail->addAddress($mensagem->__get('para'));     //Add a recipient
+			$mail->setFrom('junior@exemplo.com', 'junior Remetente');  //email que enviara a mensagem
+			$mail->addAddress($mensagem->__get('para'));    //destino da mensagem recuperado do front-end pelo objeto mensagem
 			//$mail->addReplyTo('info@example.com', 'Information');
 			//$mail->addCC('cc@example.com');
 			//$mail->addBCC('bcc@example.com');
@@ -105,6 +106,7 @@
 				<p class="lead">Seu app de envio de e-mails particular!</p>
 			</div>
 
+			<!--Logica para validaçao do envio do email -->
 			<div class="row">
 				<div class="col-md-12">
 
